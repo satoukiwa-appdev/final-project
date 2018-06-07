@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180221161615) do
+ActiveRecord::Schema.define(version: 20180606201655) do
 
   create_table "active_admin_comments", force: :cascade do |t|
     t.string "namespace"
@@ -41,6 +41,41 @@ ActiveRecord::Schema.define(version: 20180221161615) do
     t.datetime "updated_at", null: false
     t.index ["email"], name: "index_admin_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
+  end
+
+  create_table "cta_locs", force: :cascade do |t|
+    t.integer "rn"
+    t.datetime "tmst"
+    t.integer "destst"
+    t.string "destnm"
+    t.string "trdr"
+    t.integer "nextstaid"
+    t.integer "nextstpid"
+    t.string "nextstanm"
+    t.datetime "prdt"
+    t.datetime "arrt"
+    t.integer "isapp"
+    t.integer "isdly"
+    t.integer "flags"
+    t.float "lat"
+    t.float "lon"
+    t.string "heading"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "stop_data", force: :cascade do |t|
+    t.string "station_name"
+    t.string "stop_name"
+    t.float "long"
+    t.float "lat"
+    t.integer "stop_id"
+    t.integer "map_id"
+    t.string "direction_idt"
+    t.float "abs_km"
+    t.integer "trdr"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
   end
 
 end

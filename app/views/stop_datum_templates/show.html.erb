@@ -1,0 +1,98 @@
+<h1>
+  Stop datum #<%= @stop_datum.id %> details
+</h1>
+
+<a href="/stop_data/<%= @stop_datum.id %>/edit">
+  Edit stop datum
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Station name
+  </dt>
+  <dd>
+    <%= @stop_datum.station_name %>
+  </dd>
+
+  <dt>
+    Stop name
+  </dt>
+  <dd>
+    <%= @stop_datum.stop_name %>
+  </dd>
+
+  <dt>
+    Long
+  </dt>
+  <dd>
+    <%= @stop_datum.long %>
+  </dd>
+
+  <dt>
+    Lat
+  </dt>
+  <dd>
+    <%= @stop_datum.lat %>
+  </dd>
+
+  <dt>
+    Stop
+  </dt>
+  <dd>
+    <%= @stop_datum.stop_id %>
+  </dd>
+
+  <dt>
+    Map
+  </dt>
+  <dd>
+    <%= @stop_datum.map_id %>
+  </dd>
+
+  <dt>
+    Direction idt
+  </dt>
+  <dd>
+    <%= @stop_datum.direction_idt %>
+  </dd>
+
+  <dt>
+    Abs km
+  </dt>
+  <dd>
+    <%= @stop_datum.abs_km %>
+  </dd>
+
+  <dt>
+    Trdr
+  </dt>
+  <dd>
+    <%= @stop_datum.trdr %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@stop_datum.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@stop_datum.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_stop_datum/<%= @stop_datum.id %>">
+  Delete stop datum
+</a>
+
+<hr>
+
+<a href="/stop_data">
+  Go back
+</a>

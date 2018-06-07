@@ -24,6 +24,8 @@ module FinalProject
       g.scaffold_stylesheet false
     end
 
+    Spring.watch "app/actions/**"
+
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 5.1
 

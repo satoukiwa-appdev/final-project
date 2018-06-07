@@ -1,0 +1,170 @@
+<!-- Validation failure messages -->
+<% if @cta_loc.errors.any? %>
+  <% @cta_loc.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit cta loc #<%= @cta_loc.id %>
+</h1>
+
+<hr>
+
+<form action="/update_cta_loc/<%= @cta_loc.id %>" method="post">
+  <!-- Label and input for rn -->
+  <div class="form-group">
+    <label for="rn">
+      Rn
+    </label>
+
+    <input type="text" id="rn" name="rn" class="form-control" value="<%= @cta_loc.rn %>">
+  </div>
+
+  <!-- Label and input for tmst -->
+  <div class="form-group">
+    <label for="tmst">
+      Tmst
+    </label>
+
+    <input type="text" id="tmst" name="tmst" class="form-control" value="<%= @cta_loc.tmst %>">
+  </div>
+
+  <!-- Label and input for destst -->
+  <div class="form-group">
+    <label for="destst">
+      Destst
+    </label>
+
+    <input type="text" id="destst" name="destst" class="form-control" value="<%= @cta_loc.destst %>">
+  </div>
+
+  <!-- Label and input for destnm -->
+  <div class="form-group">
+    <label for="destnm">
+      Destnm
+    </label>
+
+    <input type="text" id="destnm" name="destnm" class="form-control" value="<%= @cta_loc.destnm %>">
+  </div>
+
+  <!-- Label and input for trdr -->
+  <div class="form-group">
+    <label for="trdr">
+      Trdr
+    </label>
+
+    <input type="text" id="trdr" name="trdr" class="form-control" value="<%= @cta_loc.trdr %>">
+  </div>
+
+  <!-- Label and input for nextstaid -->
+  <div class="form-group">
+    <label for="nextstaid">
+      Nextstaid
+    </label>
+
+    <input type="text" id="nextstaid" name="nextstaid" class="form-control" value="<%= @cta_loc.nextstaid %>">
+  </div>
+
+  <!-- Label and input for nextstpid -->
+  <div class="form-group">
+    <label for="nextstpid">
+      Nextstpid
+    </label>
+
+    <input type="text" id="nextstpid" name="nextstpid" class="form-control" value="<%= @cta_loc.nextstpid %>">
+  </div>
+
+  <!-- Label and input for nextstanm -->
+  <div class="form-group">
+    <label for="nextstanm">
+      Nextstanm
+    </label>
+
+    <input type="text" id="nextstanm" name="nextstanm" class="form-control" value="<%= @cta_loc.nextstanm %>">
+  </div>
+
+  <!-- Label and input for prdt -->
+  <div class="form-group">
+    <label for="prdt">
+      Prdt
+    </label>
+
+    <input type="text" id="prdt" name="prdt" class="form-control" value="<%= @cta_loc.prdt %>">
+  </div>
+
+  <!-- Label and input for arrt -->
+  <div class="form-group">
+    <label for="arrt">
+      Arrt
+    </label>
+
+    <input type="text" id="arrt" name="arrt" class="form-control" value="<%= @cta_loc.arrt %>">
+  </div>
+
+  <!-- Label and input for isapp -->
+  <div class="form-group">
+    <label for="isapp">
+      Isapp
+    </label>
+
+    <input type="text" id="isapp" name="isapp" class="form-control" value="<%= @cta_loc.isapp %>">
+  </div>
+
+  <!-- Label and input for isdly -->
+  <div class="form-group">
+    <label for="isdly">
+      Isdly
+    </label>
+
+    <input type="text" id="isdly" name="isdly" class="form-control" value="<%= @cta_loc.isdly %>">
+  </div>
+
+  <!-- Label and input for flags -->
+  <div class="form-group">
+    <label for="flags">
+      Flags
+    </label>
+
+    <input type="text" id="flags" name="flags" class="form-control" value="<%= @cta_loc.flags %>">
+  </div>
+
+  <!-- Label and input for lat -->
+  <div class="form-group">
+    <label for="lat">
+      Lat
+    </label>
+
+    <input type="text" id="lat" name="lat" class="form-control" value="<%= @cta_loc.lat %>">
+  </div>
+
+  <!-- Label and input for lon -->
+  <div class="form-group">
+    <label for="lon">
+      Lon
+    </label>
+
+    <input type="text" id="lon" name="lon" class="form-control" value="<%= @cta_loc.lon %>">
+  </div>
+
+  <!-- Label and input for heading -->
+  <div class="form-group">
+    <label for="heading">
+      Heading
+    </label>
+
+    <input type="text" id="heading" name="heading" class="form-control" value="<%= @cta_loc.heading %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update cta loc
+  </button>
+</form>
+
+<hr>
+
+<a href="/cta_locs">
+  Go back
+</a>

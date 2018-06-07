@@ -52,3 +52,7 @@ group :test do
   gem "webmock"
   gem "rspec-html-matchers"
 end
+
+
+# bulk insert
+gem 'activerecord-import'

@@ -1,0 +1,178 @@
+<h1>
+  All cta locs
+</h1>
+
+<a href="/cta_locs/new">
+  Add a new cta loc
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Rn
+    </th>
+
+    <th>
+      Tmst
+    </th>
+
+    <th>
+      Destst
+    </th>
+
+    <th>
+      Destnm
+    </th>
+
+    <th>
+      Trdr
+    </th>
+
+    <th>
+      Nextstaid
+    </th>
+
+    <th>
+      Nextstpid
+    </th>
+
+    <th>
+      Nextstanm
+    </th>
+
+    <th>
+      Prdt
+    </th>
+
+    <th>
+      Arrt
+    </th>
+
+    <th>
+      Isapp
+    </th>
+
+    <th>
+      Isdly
+    </th>
+
+    <th>
+      Flags
+    </th>
+
+    <th>
+      Lat
+    </th>
+
+    <th>
+      Lon
+    </th>
+
+    <th>
+      Heading
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @cta_locs.each do |cta_loc| %>
+  <tr>
+    <td>
+      <%= cta_loc.id %>
+    </td>
+
+    <td>
+      <%= cta_loc.rn %>
+    </td>
+
+    <td>
+      <%= cta_loc.tmst %>
+    </td>
+
+    <td>
+      <%= cta_loc.destst %>
+    </td>
+
+    <td>
+      <%= cta_loc.destnm %>
+    </td>
+
+    <td>
+      <%= cta_loc.trdr %>
+    </td>
+
+    <td>
+      <%= cta_loc.nextstaid %>
+    </td>
+
+    <td>
+      <%= cta_loc.nextstpid %>
+    </td>
+
+    <td>
+      <%= cta_loc.nextstanm %>
+    </td>
+
+    <td>
+      <%= cta_loc.prdt %>
+    </td>
+
+    <td>
+      <%= cta_loc.arrt %>
+    </td>
+
+    <td>
+      <%= cta_loc.isapp %>
+    </td>
+
+    <td>
+      <%= cta_loc.isdly %>
+    </td>
+
+    <td>
+      <%= cta_loc.flags %>
+    </td>
+
+    <td>
+      <%= cta_loc.lat %>
+    </td>
+
+    <td>
+      <%= cta_loc.lon %>
+    </td>
+
+    <td>
+      <%= cta_loc.heading %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(cta_loc.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(cta_loc.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/cta_locs/<%= cta_loc.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

@@ -1,0 +1,147 @@
+<h1>
+  Cta loc #<%= @cta_loc.id %> details
+</h1>
+
+<a href="/cta_locs/<%= @cta_loc.id %>/edit">
+  Edit cta loc
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Rn
+  </dt>
+  <dd>
+    <%= @cta_loc.rn %>
+  </dd>
+
+  <dt>
+    Tmst
+  </dt>
+  <dd>
+    <%= @cta_loc.tmst %>
+  </dd>
+
+  <dt>
+    Destst
+  </dt>
+  <dd>
+    <%= @cta_loc.destst %>
+  </dd>
+
+  <dt>
+    Destnm
+  </dt>
+  <dd>
+    <%= @cta_loc.destnm %>
+  </dd>
+
+  <dt>
+    Trdr
+  </dt>
+  <dd>
+    <%= @cta_loc.trdr %>
+  </dd>
+
+  <dt>
+    Nextstaid
+  </dt>
+  <dd>
+    <%= @cta_loc.nextstaid %>
+  </dd>
+
+  <dt>
+    Nextstpid
+  </dt>
+  <dd>
+    <%= @cta_loc.nextstpid %>
+  </dd>
+
+  <dt>
+    Nextstanm
+  </dt>
+  <dd>
+    <%= @cta_loc.nextstanm %>
+  </dd>
+
+  <dt>
+    Prdt
+  </dt>
+  <dd>
+    <%= @cta_loc.prdt %>
+  </dd>
+
+  <dt>
+    Arrt
+  </dt>
+  <dd>
+    <%= @cta_loc.arrt %>
+  </dd>
+
+  <dt>
+    Isapp
+  </dt>
+  <dd>
+    <%= @cta_loc.isapp %>
+  </dd>
+
+  <dt>
+    Isdly
+  </dt>
+  <dd>
+    <%= @cta_loc.isdly %>
+  </dd>
+
+  <dt>
+    Flags
+  </dt>
+  <dd>
+    <%= @cta_loc.flags %>
+  </dd>
+
+  <dt>
+    Lat
+  </dt>
+  <dd>
+    <%= @cta_loc.lat %>
+  </dd>
+
+  <dt>
+    Lon
+  </dt>
+  <dd>
+    <%= @cta_loc.lon %>
+  </dd>
+
+  <dt>
+    Heading
+  </dt>
+  <dd>
+    <%= @cta_loc.heading %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@cta_loc.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@cta_loc.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_cta_loc/<%= @cta_loc.id %>">
+  Delete cta loc
+</a>
+
+<hr>
+
+<a href="/cta_locs">
+  Go back
+</a>

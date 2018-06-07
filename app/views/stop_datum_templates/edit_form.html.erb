@@ -1,0 +1,107 @@
+<!-- Validation failure messages -->
+<% if @stop_datum.errors.any? %>
+  <% @stop_datum.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit stop datum #<%= @stop_datum.id %>
+</h1>
+
+<hr>
+
+<form action="/update_stop_datum/<%= @stop_datum.id %>" method="post">
+  <!-- Label and input for station_name -->
+  <div class="form-group">
+    <label for="station_name">
+      Station name
+    </label>
+
+    <input type="text" id="station_name" name="station_name" class="form-control" value="<%= @stop_datum.station_name %>">
+  </div>
+
+  <!-- Label and input for stop_name -->
+  <div class="form-group">
+    <label for="stop_name">
+      Stop name
+    </label>
+
+    <input type="text" id="stop_name" name="stop_name" class="form-control" value="<%= @stop_datum.stop_name %>">
+  </div>
+
+  <!-- Label and input for long -->
+  <div class="form-group">
+    <label for="long">
+      Long
+    </label>
+
+    <input type="text" id="long" name="long" class="form-control" value="<%= @stop_datum.long %>">
+  </div>
+
+  <!-- Label and input for lat -->
+  <div class="form-group">
+    <label for="lat">
+      Lat
+    </label>
+
+    <input type="text" id="lat" name="lat" class="form-control" value="<%= @stop_datum.lat %>">
+  </div>
+
+  <!-- Label and input for stop_id -->
+  <div class="form-group">
+    <label for="stop_id">
+      Stop
+    </label>
+
+    <input type="text" id="stop_id" name="stop_id" class="form-control" value="<%= @stop_datum.stop_id %>">
+  </div>
+
+  <!-- Label and input for map_id -->
+  <div class="form-group">
+    <label for="map_id">
+      Map
+    </label>
+
+    <input type="text" id="map_id" name="map_id" class="form-control" value="<%= @stop_datum.map_id %>">
+  </div>
+
+  <!-- Label and input for direction_idt -->
+  <div class="form-group">
+    <label for="direction_idt">
+      Direction idt
+    </label>
+
+    <input type="text" id="direction_idt" name="direction_idt" class="form-control" value="<%= @stop_datum.direction_idt %>">
+  </div>
+
+  <!-- Label and input for abs_km -->
+  <div class="form-group">
+    <label for="abs_km">
+      Abs km
+    </label>
+
+    <input type="text" id="abs_km" name="abs_km" class="form-control" value="<%= @stop_datum.abs_km %>">
+  </div>
+
+  <!-- Label and input for trdr -->
+  <div class="form-group">
+    <label for="trdr">
+      Trdr
+    </label>
+
+    <input type="text" id="trdr" name="trdr" class="form-control" value="<%= @stop_datum.trdr %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update stop datum
+  </button>
+</form>
+
+<hr>
+
+<a href="/stop_data">
+  Go back
+</a>

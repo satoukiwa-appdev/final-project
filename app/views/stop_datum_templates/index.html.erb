@@ -1,0 +1,122 @@
+<h1>
+  All stop data
+</h1>
+
+<a href="/stop_data/new">
+  Add a new stop datum
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Station name
+    </th>
+
+    <th>
+      Stop name
+    </th>
+
+    <th>
+      Long
+    </th>
+
+    <th>
+      Lat
+    </th>
+
+    <th>
+      Stop
+    </th>
+
+    <th>
+      Map
+    </th>
+
+    <th>
+      Direction idt
+    </th>
+
+    <th>
+      Abs km
+    </th>
+
+    <th>
+      Trdr
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @stop_data.each do |stop_datum| %>
+  <tr>
+    <td>
+      <%= stop_datum.id %>
+    </td>
+
+    <td>
+      <%= stop_datum.station_name %>
+    </td>
+
+    <td>
+      <%= stop_datum.stop_name %>
+    </td>
+
+    <td>
+      <%= stop_datum.long %>
+    </td>
+
+    <td>
+      <%= stop_datum.lat %>
+    </td>
+
+    <td>
+      <%= stop_datum.stop_id %>
+    </td>
+
+    <td>
+      <%= stop_datum.map_id %>
+    </td>
+
+    <td>
+      <%= stop_datum.direction_idt %>
+    </td>
+
+    <td>
+      <%= stop_datum.abs_km %>
+    </td>
+
+    <td>
+      <%= stop_datum.trdr %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(stop_datum.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(stop_datum.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/stop_data/<%= stop_datum.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>
