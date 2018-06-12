@@ -2,13 +2,15 @@ class TrainlogTask
     
     #loop main task with specified delay and cycle number
     def self.tester(delay_t, cycle_n)
+        
+        
         for i in 1..cycle_n
             main
             puts i
-            sleep(delay_t)
+            if i < cycle_n
+                sleep(delay_t)
+            end
         end
-        
-        
     end
     
     #Collect data from CTA_API
@@ -17,15 +19,16 @@ class TrainlogTask
         temp_rn = Array.new() #store run numbers (local)
         rn_log = Array.new() #store train log data
         rn_loc = Array.new() #store return from location API
-        mode = 1 #skips the run number->train follower logic sequence
+        mode = 0 #skips the run number->train follower logic sequence
         
         # get "locations" for purple line
         ret_loc = CTA_API.location("p")
-        if ret_loc.dig("ctatt", "errCd") == 0 then
+        if ret_loc.dig("ctatt", "errCd").to_i == 0 then
             dat =  ret_loc.dig("ctatt", "route", 0, "train") 
             tmst = {"tmst" => ret_loc.dig("ctatt", "tmst")}
         
-            if mode == 1 then
+            # mode == 1 allows run number -> follower logic
+            if mode == 1 then 
                 #get all run numbers first
                 for train in dat do
                     temp_rn.push(train.dig("rn"))
@@ -44,10 +47,12 @@ class TrainlogTask
                     end
                  end
              end
-    
+             
+             
             # store location data in DB 
             for train in dat do
                 location = Hash.new()
+                logger.debug(train.inspect)
                 location = tmst.merge(train)
                 rn_loc.push(location)
                 reg_locDB(location)

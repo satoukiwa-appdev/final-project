@@ -2,7 +2,7 @@
 #
 # Table name: stop_data
 #
-#  id            :integer          not null, primary key
+#  id            :bigint(8)        not null, primary key
 #  station_name  :string
 #  stop_name     :string
 #  long          :float

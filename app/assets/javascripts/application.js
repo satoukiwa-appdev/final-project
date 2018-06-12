@@ -11,3 +11,5 @@
 // about supported directives.
 //
 //= require rails-ujs
+//= require shape
+//= require d3_v4

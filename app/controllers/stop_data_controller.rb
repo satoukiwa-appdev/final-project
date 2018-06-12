@@ -44,7 +44,7 @@ class StopDataController < ApplicationController
 
       redirect_to("/stop_data", :notice => "Stop datum created successfully.")
     else
-      render("stop_datum_templates/new_form.html.erb")
+      render("stop_datum_templates/new.html.erb")
     end
   end
 

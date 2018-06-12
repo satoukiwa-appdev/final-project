@@ -86,4 +86,41 @@ class CtaLocsController < ApplicationController
 
     redirect_to("/cta_locs", :notice => "Cta loc deleted successfully.")
   end
+  
+  def viewer
+    @cta_locs = CtaLoc.all
+    @stops = StopDatum.all
+    @coords = Coord_Lib.get_coord(1)
+    
+    
+    # extract first data (for testing)
+    
+    @rn = @coords.keys
+    @plot_d = @coords.dig(@rn[0])
+    
+    
+    
+    
+    # temp_tmst = @coords.dig(@rn[0], "tmst")
+    # temp_loc = @coords.dig(@rn[0], "abs_loc")
+      
+    #   @plot_d = Array.new
+    # for i in 0..(temp_tmst.size-1) do
+      
+    #   time_dat = temp_tmst[i].to_time
+    #   time_dat = time_dat.strftime("%H:%M:%S")
+    #   @plot_d.push([time_dat, temp_loc[i]]) 
+    # end
+    
+    
+    # raise
+    
+    
+    
+    
+    render("cta_loc_templates/viewer.html.erb")
+    
+  end
+  
+  
 end

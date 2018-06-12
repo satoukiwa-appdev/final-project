@@ -13,9 +13,11 @@ gem "rails", "~> 5.1.5"
 gem "sass-rails", "~> 5.0"
 gem "tzinfo-data", platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem "uglifier", ">= 1.3.0"
+gem "pg"
+
 
 group :production do
-  gem "pg"
+
   gem "rails_12factor"
 end
 
@@ -27,7 +29,7 @@ group :development, :test do
   gem "draft_log", github: "firstdraft/draft_log"
   gem "grade_runner", github: "firstdraft/grade_runner"
   gem "pry-rails"
-  gem "sqlite3"
+
   gem "web_git", github: "firstdraft/web_git"
 end
 
@@ -56,3 +58,7 @@ end
 
 # bulk insert
 gem 'activerecord-import'
+
+
+# Chartkick
+gem "chartkick"

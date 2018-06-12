@@ -5,9 +5,7 @@ Rails.application.routes.draw do
   # CREATE
   get("/stop_data/new", { :controller => "stop_data", :action => "new" })
   post("/create_stop_datum", { :controller => "stop_data", :action => "create" })
-  
-  # get("/stop_data/new", { :controller => "stop_data", :action => "new_form" })
-  # post("/create_stop_datum", { :controller => "stop_data", :action => "create_row" })
+  post("/create_stop_datum", { :controller => "stop_data", :action => "create_row" })
 
   # READ
   get("/stop_data", { :controller => "stop_data", :action => "index" })
@@ -30,7 +28,9 @@ Rails.application.routes.draw do
 
   # READ
   get("/cta_locs", { :controller => "cta_locs", :action => "index" })
+  get("/cta_locs/view", { :controller => "cta_locs", :action => "viewer" })
   get("/cta_locs/:id_to_display", { :controller => "cta_locs", :action => "show" })
+
 
   # UPDATE
   get("/cta_locs/:prefill_with_id/edit", { :controller => "cta_locs", :action => "edit_form" })
