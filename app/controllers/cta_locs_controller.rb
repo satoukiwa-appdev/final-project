@@ -1,6 +1,6 @@
 class CtaLocsController < ApplicationController
   def index
-    @cta_locs = CtaLoc.all
+    @cta_locs = CtaLoc.all.reverse_order
 
     render("cta_loc_templates/index.html.erb")
   end
@@ -86,6 +86,20 @@ class CtaLocsController < ApplicationController
 
     redirect_to("/cta_locs", :notice => "Cta loc deleted successfully.")
   end
+  
+  def download_csv
+    require 'csv'
+    @cta_loc = CtaLoc.all
+
+    respond_to do |format|
+      format.html
+      format.csv do
+          send_data @cta_loc.to_csv
+      end
+    end
+  end
+  
+  
   
   def viewer
     @cta_locs = CtaLoc.all

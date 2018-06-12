@@ -7,6 +7,7 @@
   <td><a href="/">Home</a></td>
   <td><a href="/stop_data/">Go back</a></td>
   <td><a href="/stop_data/new">Add a new stop</a></td>
+  <td>Download: <%= link_to "CSV", stop_data_download_path(format: "csv") %></td>
 </table>
 
 
@@ -124,3 +125,6 @@
   </tr>
   <% end %>
 </table>
+
+
+

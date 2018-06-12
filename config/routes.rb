@@ -28,6 +28,7 @@ Rails.application.routes.draw do
 
   # READ
   get("/stop_data", { :controller => "stop_data", :action => "index" })
+  get("/stop_data/download", { :controller => "stop_data", :action => "download_csv" })
   get("/stop_data/:id_to_display", { :controller => "stop_data", :action => "show" })
 
   # UPDATE
@@ -47,6 +48,7 @@ Rails.application.routes.draw do
 
   # READ
   get("/cta_locs", { :controller => "cta_locs", :action => "index" })
+  get("/cta_locs/download", { :controller => "cta_locs", :action => "download_csv"})
   get("/cta_locs/view", { :controller => "cta_locs", :action => "viewer" })
   get("/cta_locs/:id_to_display", { :controller => "cta_locs", :action => "show" })
 

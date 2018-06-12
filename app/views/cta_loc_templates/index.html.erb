@@ -8,6 +8,9 @@
 
 <table class = "table table-sm">
   <td><a href="/">Home</a></td>
+  <td>Number of records: <%= CtaLoc.count %></td>
+  <td>Download: <%= link_to "CSV", cta_locs_download_path(format: "csv") %></td>
+
   <!--<td><a href="/cta_locs/view">Viewer</a></td>-->
 </table>
 

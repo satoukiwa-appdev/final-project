@@ -1,8 +1,17 @@
 class StopDataController < ApplicationController
   def index
+    require 'csv'
     @stop_data = StopDatum.all
 
-    render("stop_datum_templates/index.html.erb")
+    respond_to do |format|
+      format.html
+      format.csv do
+        filename = "stops"
+        headers['Content-Disposition'] = "attachment; filename=\"#{filename}.csv\""
+      end
+    end
+
+      render("stop_datum_templates/index.html.erb")
   end
 
   def show
@@ -84,7 +93,20 @@ class StopDataController < ApplicationController
     redirect_to("/stop_data", :notice => "Stop datum deleted successfully.")
   end
   
-    private
+  def download_csv
+    require 'csv'
+    @stop_data = StopDatum.all
+
+    respond_to do |format|
+      format.html
+      format.csv do
+          send_data @stop_data.to_csv
+      end
+    end
+  end
+
+
+  private
 
   def import_stops
       # 登録処理前のレコード数

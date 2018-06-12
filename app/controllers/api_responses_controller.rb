@@ -1,6 +1,6 @@
 class ApiResponsesController < ApplicationController
   def index
-    @api_responses = ApiResponse.all
+    @api_responses = ApiResponse.all.reverse_order
 
     render("api_response_templates/index.html.erb")
   end

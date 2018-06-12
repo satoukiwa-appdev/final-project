@@ -15,11 +15,9 @@ class TrainlogTask
     #Collect data from CTA_API
     def self.main
         #define local variables
-        temp_rn = Array.new() #store run numbers (local)
         rn_log = Array.new() #store train log data
         rn_loc = Array.new() #store return from location API
-        mode = 0 #skips the run number->train follower logic sequence
-        
+
         # get "locations" for purple line
         ret_loc = CTA_API.location("p")
         
@@ -29,14 +27,20 @@ class TrainlogTask
             tmst = {"tmst" => ret_loc.dig("ctatt", "tmst")}
             
             # place holder
-            rn_log = follow_all_rn(ret_loc)
+            # rn_log = follow_all_rn(ret_loc)
             
             # store location data in DB 
-            for train in dat do
+            if dat.instance_of?(Array) #check if data is array
+            # Normal route, Array of hash [{},{}]
+                for train in dat do
+                    location = Hash.new()
+                    location = tmst.merge(train)
+                    rn_loc.push(location)
+                end
+            else #only have one data (hash)
                 location = Hash.new()
-                location = tmst.merge(train)
+                location = tmst.merge(dat)
                 rn_loc.push(location)
-                reg_locDB(location)
             end
         end
 
@@ -58,10 +62,14 @@ class TrainlogTask
             tmst = {"tmst" => ret_loc.dig("ctatt", "tmst")}
 
             #get all run numbers first
-            for train in dat do
-                temp_rn.push(train.dig("rn"))
+            if dat.size == 1
+                temp_rn.push(dat.dig("rn"))
+            else
+                for train in dat do
+                    temp_rn.push(train.dig("rn"))
+                end
             end
-             
+
              #for all current run numbers, get position and relavant information
              for run_num in temp_rn do
                  ret_fol = CTA_API.follower(run_num)
