@@ -1,0 +1,35 @@
+<!-- Validation failure messages -->
+<% if @api_response.errors.any? %>
+  <% @api_response.errors.full_messages.each do |message| %>
+    <div class="alert">
+      <%= message %>
+    </div>
+  <% end %>
+<% end %>
+
+<h1>
+  Edit api response #<%= @api_response.id %>
+</h1>
+
+<hr>
+
+<form action="/update_api_response/<%= @api_response.id %>" method="post">
+  <!-- Label and input for payload -->
+  <div class="form-group">
+    <label for="payload">
+      Payload
+    </label>
+
+    <input type="text" id="payload" name="payload" class="form-control" value="<%= @api_response.payload %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Update api response
+  </button>
+</form>
+
+<hr>
+
+<a href="/api_responses">
+  Go back
+</a>

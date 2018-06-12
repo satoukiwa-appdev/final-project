@@ -1,0 +1,37 @@
+<!-- Validation failure messages -->
+<% if @api_response.present? %>
+  <% if @api_response.errors.any? %>
+    <% @api_response.errors.full_messages.each do |message| %>
+      <div class="alert alert-danger">
+        <%= message %>
+      </div>
+    <% end %>
+  <% end %>
+<% end %>
+
+<h1>
+  Add a new api response
+</h1>
+
+<hr>
+
+<form action="/create_api_response" method="post">
+  <!-- Label and input for payload -->
+  <div class="form-group">
+    <label for="payload">
+      Payload
+    </label>
+
+    <input type="text" id="payload" name="payload" class="form-control" value="<%= @api_response.try(:payload) %>">
+  </div>
+
+  <button class="btn btn-block btn-outline-secondary">
+    Create api response
+  </button>
+</form>
+
+<hr>
+
+<a href="/api_responses">
+  Go back
+</a>

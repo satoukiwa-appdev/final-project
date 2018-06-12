@@ -1,0 +1,42 @@
+<h1>
+  Api response #<%= @api_response.id %> details
+</h1>
+
+<a href="/api_responses/<%= @api_response.id %>/edit">
+  Edit api response
+</a>
+
+<hr>
+
+<dl>
+  <dt>
+    Payload
+  </dt>
+  <dd>
+    <%= @api_response.payload %>
+  </dd>
+
+  <dt>
+    Created at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@api_response.created_at) %> ago
+  </dd>
+
+  <dt>
+    Updated at
+  </dt>
+  <dd>
+    <%= time_ago_in_words(@api_response.updated_at) %> ago
+  </dd>
+</dl>
+
+<a href="/delete_api_response/<%= @api_response.id %>">
+  Delete api response
+</a>
+
+<hr>
+
+<a href="/api_responses">
+  Go back
+</a>

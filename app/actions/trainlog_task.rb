@@ -2,8 +2,6 @@ class TrainlogTask
     
     #loop main task with specified delay and cycle number
     def self.tester(delay_t, cycle_n)
-        
-        
         for i in 1..cycle_n
             main
             puts i
@@ -13,6 +11,7 @@ class TrainlogTask
         end
     end
     
+
     #Collect data from CTA_API
     def self.main
         #define local variables
@@ -23,54 +22,66 @@ class TrainlogTask
         
         # get "locations" for purple line
         ret_loc = CTA_API.location("p")
-        if ret_loc.dig("ctatt", "errCd").to_i == 0 then
+        
+        # Error check
+        if ret_loc.dig("ctatt", "errCd").to_i == 0 then 
             dat =  ret_loc.dig("ctatt", "route", 0, "train") 
             tmst = {"tmst" => ret_loc.dig("ctatt", "tmst")}
-        
-            # mode == 1 allows run number -> follower logic
-            if mode == 1 then 
-                #get all run numbers first
-                for train in dat do
-                    temp_rn.push(train.dig("rn"))
-                end
-                 
-                 #for all current run numbers, get position and relavant information
-                 for run_num in temp_rn do
-                     ret_fol = CTA_API.follower(run_num)
-                     #Check if there is any error code returned
-                     if ret_fol.dig("ctatt", "errCd") == 0 then
-                         #Do only when no error
-                         tmst= {"tmst" => ret_fol.dig("ctatt", "tmst")}
-                         temp = ret_fol.dig("ctatt", "eta",0)
-                         temp = temp.merge(tmst)
-                         rn_log.push(temp)
-                    end
-                 end
-             end
-             
-             
+            
+            # place holder
+            rn_log = follow_all_rn(ret_loc)
+            
             # store location data in DB 
             for train in dat do
                 location = Hash.new()
-                logger.debug(train.inspect)
                 location = tmst.merge(train)
                 rn_loc.push(location)
                 reg_locDB(location)
             end
         end
 
-         
-        # puts temp_rn
-        # puts rn_loc
-        # puts rn_log
-         
-         
-        #  return rn_loc
-        #  return rn_log
-         
+    end
+    
+    # give response from follower API
+    def self.follow_all_rn(ret_loc)
+        temp_rn = Array.new() #store run numbers (local)
+        rn_log = Array.new() #store train log data
+        
+        if ret_loc.dig("ctatt", "errCd").to_i == 0 then
+            err = 0
+        else
+            err = 1
+        end
+        
+        if err == 0 then
+            dat =  ret_loc.dig("ctatt", "route", 0, "train") 
+            tmst = {"tmst" => ret_loc.dig("ctatt", "tmst")}
+
+            #get all run numbers first
+            for train in dat do
+                temp_rn.push(train.dig("rn"))
+            end
+             
+             #for all current run numbers, get position and relavant information
+             for run_num in temp_rn do
+                 ret_fol = CTA_API.follower(run_num)
+                 #Check if there is any error code returned
+                 if ret_fol.dig("ctatt", "errCd") == 0 then
+                     #Do only when no error
+                     tmst= {"tmst" => ret_fol.dig("ctatt", "tmst")}
+                     temp = ret_fol.dig("ctatt", "eta",0)
+                     temp = temp.merge(tmst)
+                     rn_log.push(temp)
+                end
+             end
+             
+             return rn_log
+
+        end
     end
     
     
+    # Copy data into db
     def self.reg_locDB(train_loc)
         temp = CtaLoc.new
         temp.rn = train_loc["rn"]

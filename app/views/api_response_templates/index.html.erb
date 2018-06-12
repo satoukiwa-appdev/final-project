@@ -1,0 +1,58 @@
+<h1>
+  All api responses
+</h1>
+
+<a href="/api_responses/new">
+  Add a new api response
+</a>
+
+<hr>
+
+<table class="table">
+  <tr>
+    <th>
+      ID
+    </th>
+
+    <th>
+      Payload
+    </th>
+
+    <th>
+      Created at
+    </th>
+
+    <th>
+      Updated at
+    </th>
+
+    <th>
+    </th>
+  </tr>
+
+  <% @api_responses.each do |api_response| %>
+  <tr>
+    <td>
+      <%= api_response.id %>
+    </td>
+
+    <td>
+      <%= api_response.payload %>
+    </td>
+
+    <td>
+      <%= time_ago_in_words(api_response.created_at) %> ago
+    </td>
+
+    <td>
+      <%= time_ago_in_words(api_response.updated_at) %> ago
+    </td>
+
+    <td>
+      <a href="/api_responses/<%= api_response.id %>">
+        Show details
+      </a>
+    </td>
+  </tr>
+  <% end %>
+</table>

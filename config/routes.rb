@@ -1,6 +1,25 @@
 Rails.application.routes.draw do
 
   
+  # Routes for the Api response resource:
+
+  # CREATE
+  get("/api_responses/new", { :controller => "api_responses", :action => "new_form" })
+  post("/create_api_response", { :controller => "api_responses", :action => "create_row" })
+
+  # READ
+  get("/api_responses", { :controller => "api_responses", :action => "index" })
+  get("/api_responses/:id_to_display", { :controller => "api_responses", :action => "show" })
+
+  # UPDATE
+  get("/api_responses/:prefill_with_id/edit", { :controller => "api_responses", :action => "edit_form" })
+  post("/update_api_response/:id_to_modify", { :controller => "api_responses", :action => "update_row" })
+
+  # DELETE
+  get("/delete_api_response/:id_to_remove", { :controller => "api_responses", :action => "destroy_row" })
+
+  #------------------------------
+
   # Routes for the Stop datum resource:
   # CREATE
   get("/stop_data/new", { :controller => "stop_data", :action => "new" })

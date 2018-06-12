@@ -20,7 +20,12 @@ class CTA_API
         req_url = @bs_url + api + @neck + @key + para + @tail
         
         tJson = open(req_url).read
+        api_response = ApiResponse.new
+    
         prsJson = JSON.parse(tJson)
+
+        api_response.payload = prsJson
+        api_response.save
         
         return prsJson
     end
