@@ -36,13 +36,17 @@ class TrainlogTask
                     location = Hash.new()
                     location = tmst.merge(train)
                     rn_loc.push(location)
+                    reg_locDB(location)
                 end
             else #only have one data (hash)
                 location = Hash.new()
                 location = tmst.merge(dat)
                 rn_loc.push(location)
+                reg_locDB(location)
             end
         end
+        
+        return dat.instance_of?(Array)
 
     end
     
@@ -83,7 +87,6 @@ class TrainlogTask
                 end
              end
              
-             return rn_log
 
         end
     end
@@ -93,7 +96,7 @@ class TrainlogTask
     def self.reg_locDB(train_loc)
         temp = CtaLoc.new
         temp.rn = train_loc["rn"]
-        temp.tmst = train_loc["tmst"]
+        temp.tmst = train_loc["tmst"].to_time.in_time_zone('Central Time (US & Canada)')
         temp.destst = train_loc["destSt"]
         temp.destnm = train_loc["destNm"]
         temp.trdr = train_loc["trDr"]

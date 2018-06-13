@@ -99,7 +99,11 @@ class CtaLocsController < ApplicationController
     end
   end
   
-  
+  def sender
+    email = "atcloc.holder@gmail.com"
+    SampleMailer.send_when_update(email).deliver
+    redirect_to("/index.html", :notice => "Email Sent")
+  end
   
   def viewer
     @cta_locs = CtaLoc.all

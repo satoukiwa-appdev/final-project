@@ -1,4 +1,5 @@
 class ApplicationMailer < ActionMailer::Base
-  default from: 'from@example.com'
+  default from: 'CTA locations sender (ks)',
+          reply_to: 'atcloc.holder@gmail.com'
   layout 'mailer'
 end

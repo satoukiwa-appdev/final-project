@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
   
+
+  
   # Routes for the Api response resource:
 
   # CREATE
@@ -50,6 +52,7 @@ Rails.application.routes.draw do
   get("/cta_locs", { :controller => "cta_locs", :action => "index" })
   get("/cta_locs/download", { :controller => "cta_locs", :action => "download_csv"})
   get("/cta_locs/view", { :controller => "cta_locs", :action => "viewer" })
+  get("/cta_locs/send", { :controller => "cta_locs", :action => "sender" })
   get("/cta_locs/:id_to_display", { :controller => "cta_locs", :action => "show" })
 
 
@@ -62,7 +65,9 @@ Rails.application.routes.draw do
 
   #------------------------------
 
-    get("/", { :controller => "task", :action => "index" })
+  get("/", { :controller => "task", :action => "index" })
+  get("/index", { :controller => "task", :action => "index" })
+
 
   
   devise_for :admin_users, ActiveAdmin::Devise.config

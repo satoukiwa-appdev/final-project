@@ -4,7 +4,5 @@ class TaskController < ActionController::Base
       
   end
     
-    
-    
-  
+
 end
