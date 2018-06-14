@@ -100,8 +100,13 @@ class CtaLocsController < ApplicationController
   end
   
   def sender
-    email = "atcloc.holder@gmail.com"
-    SampleMailer.send_when_update(email).deliver
+    SampleMailer.send_when_update.deliver
+    redirect_to("/index", :notice => "Email Sent")
+  end
+  
+  def sender_clear
+    SampleMailer.send_when_update.deliver
+    CtaLoc.destroy_all
     redirect_to("/index.html", :notice => "Email Sent")
   end
   
