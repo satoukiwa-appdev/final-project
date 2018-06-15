@@ -104,46 +104,55 @@ class CtaLocsController < ApplicationController
     redirect_to("/index", :notice => "Email Sent")
   end
   
+  def get_data
+    before = CtaLoc.count
+    TrainlogTask.main
+    count = CtaLoc.count - before
+    str = "added " + count.to_s + " records"
+    
+    redirect_to("/cta_locs", :notice =>str)
+  end
+  
   def sender_clear
     SampleMailer.send_when_update.deliver
     CtaLoc.destroy_all
     redirect_to("/index.html", :notice => "Email Sent")
   end
   
-  def viewer
-    @cta_locs = CtaLoc.all
-    @stops = StopDatum.all
-    @coords = Coord_Lib.get_coord(1)
+  # def viewer
+  #   @cta_locs = CtaLoc.all
+  #   @stops = StopDatum.all
+  #   @coords = Coord_Lib.get_coord(1)
     
     
-    # extract first data (for testing)
+  #   # extract first data (for testing)
     
-    @rn = @coords.keys
-    @plot_d = @coords.dig(@rn[0])
-    
-    
+  #   @rn = @coords.keys
+  #   @plot_d = @coords.dig(@rn[0])
     
     
-    # temp_tmst = @coords.dig(@rn[0], "tmst")
-    # temp_loc = @coords.dig(@rn[0], "abs_loc")
+    
+    
+  #   # temp_tmst = @coords.dig(@rn[0], "tmst")
+  #   # temp_loc = @coords.dig(@rn[0], "abs_loc")
       
-    #   @plot_d = Array.new
-    # for i in 0..(temp_tmst.size-1) do
+  #   #   @plot_d = Array.new
+  #   # for i in 0..(temp_tmst.size-1) do
       
-    #   time_dat = temp_tmst[i].to_time
-    #   time_dat = time_dat.strftime("%H:%M:%S")
-    #   @plot_d.push([time_dat, temp_loc[i]]) 
-    # end
+  #   #   time_dat = temp_tmst[i].to_time
+  #   #   time_dat = time_dat.strftime("%H:%M:%S")
+  #   #   @plot_d.push([time_dat, temp_loc[i]]) 
+  #   # end
     
     
-    # raise
+  #   # raise
     
     
     
     
-    render("cta_loc_templates/viewer.html.erb")
+  #   render("cta_loc_templates/viewer.html.erb")
     
-  end
+  # end
   
   
 end

@@ -1,3 +1,5 @@
+<!DOCTYPE html>
+<html>
 <head>
   <title>CTA-Location Logger</title>
 
@@ -12,11 +14,16 @@
 
 
 <body>
+  <% flash.each do |key, value| %>
+    <%= content_tag(:div, value, class: "#{key}") %>
+  <% end %>
     
 <h1>
     Index
 </h1>
-    
+  
+<hr>
+
 <div class="container pt-5">
  <table class="table">
     <thead><tr>
@@ -28,7 +35,11 @@
       <td>Cta Train Location (<%= CtaLoc.count%> records)</td>
       <td><a href ="/cta_locs">View</a></td>
     </tr>
-
+    
+    <tr>
+      <td></td>
+      <td><a href ="/cta_locs/get">Get Record (Testfunction)</a></td>
+    </tr>
 
     <tr>
       <td>Cta Station (<%=StopDatum.count%> records)</td>
@@ -48,9 +59,14 @@
     </tbody>
  
 </div>
-    
-    
-    
+  
+
+
+
+<figure class="figure">
+  <img src='/overview.png' class="figure-img img-fluid rounded" alt="App overview">
+  <figcaption class="figure-caption text-right">App overview</figcaption>
+</figure>
     
 </body>
 

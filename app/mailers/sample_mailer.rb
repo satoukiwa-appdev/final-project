@@ -4,7 +4,6 @@ class SampleMailer < ApplicationMailer
         @cnt = CtaLoc.count
         @time = Time.now.strftime("%Y-%m-%d_%H:%M:%S")
 
-        
         # file name  
         fn = "CTA data (p)_"+ @time+".csv"
 
@@ -30,7 +29,6 @@ class SampleMailer < ApplicationMailer
         #clean up by deleting file and then deleting temp folder
         File.delete(Rails.root.join("public", "temp", fn))
 
-        
         # If the directory existed below, keep it and if not delete it
         if keepDir == 1
             # Do nothing

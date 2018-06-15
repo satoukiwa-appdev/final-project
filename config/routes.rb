@@ -1,8 +1,5 @@
 Rails.application.routes.draw do
 
-  
-
-  
   # Routes for the Api response resource:
 
   # CREATE
@@ -47,11 +44,12 @@ Rails.application.routes.draw do
   # CREATE
   get("/cta_locs/new", { :controller => "cta_locs", :action => "new_form" })
   post("/create_cta_loc", { :controller => "cta_locs", :action => "create_row" })
+  get("/cta_locs/get", { :controller => "cta_locs", :action => "get_data" })
 
   # READ
   get("/cta_locs", { :controller => "cta_locs", :action => "index" })
   get("/cta_locs/download", { :controller => "cta_locs", :action => "download_csv"})
-  get("/cta_locs/view", { :controller => "cta_locs", :action => "viewer" })
+  # get("/cta_locs/view", { :controller => "cta_locs", :action => "viewer" })
   get("/cta_locs/send", { :controller => "cta_locs", :action => "sender" })
   get("/cta_locs/:id_to_display", { :controller => "cta_locs", :action => "show" })
 
