@@ -13,7 +13,7 @@ module Clockwork
     # retrieve data from CTA API and chuck into database
       TrainlogTask.main
     when 'test.job'
-      SampleMailer.send_when_update.deliver
+      # SampleMailer.send_when_update.deliver
     when 'less.frequent.job'
       # Every 3 minutes
     when 'hourly.job'
