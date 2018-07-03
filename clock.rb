@@ -38,5 +38,6 @@ module Clockwork
   every(3.minutes, 'less.frequent.job')
   every(1.hour, 'hourly.job')
   every(6.hour, 'quarterly.job')
-  every(1.day, 'midnight.job', :at => '00:00')
+  every(1.day, 'midnight.job', :at => '06:00')
+  # Time is in UTC
 end
